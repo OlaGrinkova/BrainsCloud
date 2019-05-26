@@ -244,6 +244,10 @@ section {
     background-color: #f8f8f8;
 }
 
+.section--clients {
+    background: #f5f5f5;
+}
+
 .section__header {
     width: 100%;
     max-width: 950px;
@@ -544,7 +548,7 @@ section {
 }
 
 .reviews__item {
-    padding-left: 205px;
+    padding-left: 235px;
     position: relative;
 }
 
@@ -646,6 +650,71 @@ section {
 
 /*Logos*/
 .logos {
+    padding: 60px 60px;
+    margin: 40px 40px;
     display: flex;
     justify-content: space-between;/*чтобы равномерно радвинуть по всему блоку*/
+    align-items: center;
+}
+
+/*Works*/
+.works {
+    display: flex;/*означает что содержимые части одинаковые*/
+}
+
+.works__col {
+    flex: 1 1 0;
+}
+
+.works__item {
+    position: relative;/*чтобы потом .works__info позиционировать абсолютно absolute относительно .works__item, и сделать его центром этого блока*/
+
+    background: linear-gradient(to bottom, #f38181, #fce38a);;
+}
+
+.works__item:hover .works__image {
+    opacity: .1;
+}
+
+.works__item:hover .works__info {
+    opacity: 1;/*принаводе на .work__item появляется .work__info, важно что 1(целое чисто, а не десятая часть)*/
+}
+
+.works__image {
+    display: block;/*чтобы не было лишних отступов снизу*/
+    max-width: 100%;/*иначе картинки больше окна браузера и появляется скролл*/
+    height: auto;
+
+    transition: opacity .2s linear;
+}
+
+.works__info {
+    width: 100%;
+    padding: 0 15px;
+
+    text-align: center;/*текст по центру*/
+    color: #ffffff;
+    opacity: 0; /*скрыть*/
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+
+    transform: translate3d(0, -50%, 0);
+    transition: opacity .2s linear; 
+}
+
+.works__title {
+    margin-bottom: 5px;
+
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.works__text {
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
 }
