@@ -464,6 +464,8 @@ section {
 
 .devices__item {
     display: block;
+    max-width: 100%;/*ширина автоматически уменьшается в зависимости от медиа меток*/
+    height: auto;/*ширина автоматически уменьшается в зависимости от медиа меток*/
 }
 
 .devices__item--iphone {
@@ -476,11 +478,23 @@ section {
 /*we do*/
 .wedo {
     display: flex;
+    flex-wrap: wrap;/*нужен для width:100% в медиа запросе при экране 770px*/
+    margin: 0 -15px;
 }
 
 .wedo__item {
     width: 50%;
+    padding: 0 15px;
+} 
+
+.wedo__img {
+    display: block;
+    max-width: 100%;
+    height: auto;/*уменьшаем браузер-уменьшается картинка, благодаря display: block;max-width: 100%;height: auto;*/
+
 }
+
+/*Accordion*/
 
 .accordion__item {
     margin-bottom: 10px;
@@ -570,6 +584,10 @@ section {
 }
 
 .reviews__photo {
+    display: block;/*обязателен для взаимодействия с мердженами в медиа, для центрирования фото*/
+    width: 210px;
+    height: 210px;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -672,6 +690,17 @@ section {
     display: flex;
     justify-content: space-between;/*чтобы равномерно радвинуть по всему блоку*/
     align-items: center;
+    margin: 0 -15px;
+}
+
+.logos__item {
+    padding: 0 15px;
+}
+
+.logos__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /*Works*/
@@ -1126,7 +1155,7 @@ footer__social-header b {
     color: #f38181;
 }
 
-@media (max-width: 1320px) { /*по возрастанию, сверху больше*/
+@media (max-width: 1230px) { /*по возрастанию, сверху больше*/
 
     /*Intro*/
     .intro__suptitle {
@@ -1138,9 +1167,28 @@ footer__social-header b {
     }
 
     /*Revievs*/
-    .reviews__text {
-        font-size: 20px;
+    .reviews {
+        padding: 70px 60px;
     }
+
+    .reviews__item {
+    padding-left: 213px;
+    }
+
+    .reviews__text {
+        font-size: 16px;
+        margin-bottom: 50px;    
+    }
+
+    .reviews__photo {
+        width: 156px;
+        height: 156px;
+    }
+
+    /*Logos*/
+    .logos {
+        padding: 36px;
+        margin: -16px;
 }
 
 @media (max-width: 990px) {
@@ -1181,6 +1229,31 @@ footer__social-header b {
     .services__item--border {
         border-bottom: 0;
     }
+
+    /*Revievs*/
+    .reviews {
+        padding: 20px 60px;
+    }
+
+    .reviews__photo {
+        width: 130px;
+        height: 130px;
+    }
+
+    .reviews__text {
+        font-size: 16px;
+        margin-bottom: 20px;    
+    }
+
+    .reviews__item {
+        padding-left: 175px;
+    }
+
+    /*Logos*/
+    .logos {
+        padding: 17px;
+    margin: -29px;
+    }
 }
 
 @media (max-width: 770px) {
@@ -1201,7 +1274,11 @@ footer__social-header b {
 
    /*Section*/
    .section {
-       padding: 40px 0;
+       padding: 20px 0;       
+   }
+
+   .section--devices {
+       padding-bottom: 0;
    }
 
    /*card*/
@@ -1221,16 +1298,69 @@ footer__social-header b {
    }
 
    /*Services*/
+
+   .services {
+    justify-content: center;/*контейнер в центре*/
+   }
+
    .services__item {
     width: 100%;
     max-width: 400px;
-    padding-left: 55px;
+    padding-left: 65px;
     padding-right: 0;
-    text-align: center;
+    
    }
 
    .services__icon {
        left: 0;
+   }
+
+   /*Wedo*/
+   .wedo__img {
+       display: none;
+   }
+
+   .wedo__item {
+       width: 100%;/*не сработает без флекс врепа*/
+   }
+
+   /*Reviews*/
+   .reviews {
+    padding: 0 50px;
+}
+
+   .reviews__photo {
+       position: static;/*фото оказывается сверху*/
+       margin: 0 auto ;/*разместится центрально по горизонту, верх и низ: 0*/
+       margin-bottom: 20px;
+   }
+
+   .reviews__item {
+       padding-left: 0;    
+   }
+
+   .reviews__author {
+       font-size: 20px;
+   }
+
+   .reviews__btn {
+    top: 20px;
+   }
+
+   
+   /*Logos*/
+   .logos {
+    flex-wrap: wrap;
+    justify-content: center;
+   }
+
+   .logos__item {
+       width: 33.333%;
+       margin-bottom: 20px;
+   }
+
+   .logos__img {
+       margin: 0 auto;
    }
 }
 
@@ -1271,6 +1401,37 @@ footer__social-header b {
 
    .stat__count {
        font-size: 52px;
+   }
+
+   /*Devices*/
+   .devices {
+       max-width: 320px;
+   }
+
+   .devices__item--iphone {
+      width: 180px; 
+      bottom: -50px;
+      right: -65px;
+   }
+
+   /*Reviews*/
+   .reviews {
+       padding: 0;
+   }
+
+   /*Logos*/
+   .logos {
+    flex-wrap: wrap;
+    justify-content: center;
+   }
+
+   .logos__item {
+       width: 50%;
+       margin-bottom: 20px;
+   }
+
+   .logos__img {
+       margin: 0 auto;
    }
 
 }
