@@ -825,6 +825,7 @@ section {
 
 .blog {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -955,9 +956,15 @@ section {
 
 .footer__inner {
     display: flex;/*колонки(div.footer__col) не столбиком распологаются,а в строку*/
+    flex-wrap: wrap;
     justify-content: space-between;/*раздвинуть блоки друг от друга и растянуть по всей ширине контента*/
+    margin: 0 -15px;
     padding-bottom: 65px;/*отступ снизу*/
     }
+
+.footer__col {
+   padding: 0 15px; 
+}
 
 .footer__col--first {
     width: 40%;
@@ -1132,12 +1139,14 @@ footer__social-header b {
 }
 
 .instagram__item {
-    width: 32.333333%;
+    width: 33%;
     border-bottom: 1px solid #ffffff;/*для просветов горизонтальных*/
 }
 
 .instagram__item img {
     display: block;
+    max-width: 100%;
+    height: auto;
 }
     
 /*Copyright*/
@@ -1254,6 +1263,37 @@ footer__social-header b {
         padding: 17px;
     margin: -29px;
     }
+
+    /*Clients*/
+    .clients {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .clients__item {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    /*Footer*/
+    .footer__col--first {
+        width: 100%;/*не сработает без флекс врепа*/
+    }
+
+    .footer__col--second,
+    .footer__col--third {
+        width: 50%;
+    }
+
+    /*Instagram*/
+    .instagram {
+       justify-content: flex-start; 
+    }
+
+    .instagram__item {
+      width: auto;  
+      border-right: 1px solid #ffffff;
+    }
 }
 
 @media (max-width: 770px) {
@@ -1362,6 +1402,39 @@ footer__social-header b {
    .logos__img {
        margin: 0 auto;
    }
+
+   /*Works*/
+   .works {
+       flex-wrap: wrap;
+
+   }
+   .works__col {
+       flex: none;
+       width: 50%;
+   }
+
+   /*Blog*/
+   .blog {
+       max-width: 380px;
+       margin: 0 auto;/*выравнивание по центру*/
+   }
+
+   .blog__item {
+       width: 100%;/*без флекс врепа не сработает*/
+       margin-bottom: 30px;
+   }
+
+   .blog__item:last-child {
+       margin-bottom: 0;
+   }
+
+   /*Footer*/
+   .footer__col--first,
+   .footer__col--second,
+   .footer__col--third {
+    width: 100%;/*не сработает без флекс врепа*/
+}
+
 }
 
 @media (max-width: 575px) {
@@ -1432,6 +1505,42 @@ footer__social-header b {
 
    .logos__img {
        margin: 0 auto;
+   }
+
+   /*Works*/
+   .works__col {
+       width: 100%;
+   }
+
+   /*Clients*/
+   .clients__photo {
+       position: static;/*т.к. ранее position: relative*/
+   }
+
+   .clients__item {
+       padding-left: 0;
+       padding-right: 0;
+       text-align: center;
+   }
+
+   .clients__text:before {
+       margin: 15px auto;/*разместить в центре*/
+   }
+
+   /*Subscribe*/
+   .subscribe {
+       flex-wrap: wrap;
+       max-width: none;
+   }
+
+   .subscribe__input {
+       margin-bottom: 10px;
+       border-right: 1px solid #e7e7e7
+   }
+
+   .subscribe__input,
+   .subscribe__btn {
+       width: 100%;
    }
 
 }
