@@ -26,6 +26,11 @@ hr {
     background-color: #e5e5e5;
 }
 
+/*Page*/
+.page {
+    overflow: hidden; /*чтобы обрезать изображение айфона при просмотре на телефоне*категорически нельзя на body применять (невозможно будет прокручивать вправо-влево при зуме страници)*/
+}
+
 /*container*/
 .container {
     width: 100%;
@@ -41,6 +46,8 @@ hr {
     justify-content: center;
     width: 100%;
     height: 100vh;
+    min-height: 820px;/*минимальная высота для уменьшения, меньше не красиво*/
+    position: relative;/*чтобы блок slider был абсолютен в отношении intro, и работала min-height*/
 
     background: url("../images/intro.jpg") center no-repeat;
     -webkit-background-size: cover;
@@ -91,6 +98,23 @@ hr {
     left:0;
     right:0;
     z-index:1000;
+}
+
+.header.fixed {/*фиксированное меню, +z-index:1000; но он уже в header прописан*/
+    background-color: #e88683;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: rotate3d(0, 0, 0);/*чтоб ыменюшка не дергалась при скролле*/
+}
+
+.header.active {
+    background-color: #f38181;
+
 }
 
 .header__inner {
@@ -151,6 +175,81 @@ hr {
 
 .nav__link.active {
     color: #fce38a;    
+}
+
+/*nav-toggle*/
+.nav-toggle {
+    width: 30px;
+    padding: 10px 0;
+    display: none;/*не показывать на большом экране*/
+
+    font-size: 0;/*чтобы убрать стили button*/
+    color: transparent;/*чтобы убрать стили button*/
+
+    border: 0;/*чтобы убрать стили button*/
+    background: none;/*чтобы убрать стили button*/
+    cursor: pointer;
+
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 1;
+}
+
+.nav-toggle__item {
+    display: block;
+    width: 100%;
+    height: 3px;
+
+    background-color: #ffffff;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    transition: background .2s linear;
+
+}
+
+.nav-toggle.active .nav-toggle__item {
+    background: none;
+}
+
+.nav-toggle__item:before,/*сверху и снизу добавляем полоски, чтобы было 3шт.*/
+.nav-toggle__item:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+
+    background-color: #ffffff;
+
+    position: absolute;
+    left: 0;
+    z-index: 1;   
+    
+    transform: transform .2s linear;
+}
+
+.nav-toggle__item:before {
+    top: -8px;
+}
+
+.nav-toggle__item:after {
+    bottom: -8px;
+}
+
+
+.nav-toggle.active .nav-toggle__item:before {
+    transform-origin: left top;
+    transform: rotate(45deg) translateX(-2px); 
+}
+
+.nav-toggle.active .nav-toggle__item:after {
+ transform-origin: left bottom;
+ transform: rotate(-45deg) translateX(-3px);
 }
 
 /*button*/
@@ -230,7 +329,7 @@ hr {
 /*Section*/
 section {
     padding: 80px 0;
-}
+    }
 
 .section--devices {
     margin-bottom: 40px;
@@ -1298,10 +1397,39 @@ footer__social-header b {
 
 @media (max-width: 770px) {
 
+    /*Intro*/
+    .intro {
+        min-height: 650px;
+    }
+
+    /*Header*/
+    .header {
+        padding: 10px 0;
+    }
+
     /*Nav*/
    .nav {
-       display: none;
+       display: none;/*не показывать*/
+       width: 100%;
+
+       position: absolute;
+       top: 100%;
+       left: 0;
+
+       background: #e88683;
    }
+
+   .nav__link {
+       display: block;
+       margin: 0;
+       padding: 5px 20px;
+   }
+
+   .nav-toggle |{
+       display: block; /*Показывать*/
+   }
+
+   
 
    /*Slider*/
    .slider__text {
@@ -1440,7 +1568,7 @@ footer__social-header b {
 @media (max-width: 575px) {
 
     /*Intro*/
-    .intro__suptitle {
+      .intro__suptitle {
         font-size: 22px;
     }
 
@@ -1484,7 +1612,7 @@ footer__social-header b {
    .devices__item--iphone {
       width: 180px; 
       bottom: -50px;
-      right: -65px;
+      right: -42px;
    }
 
    /*Reviews*/
@@ -1542,5 +1670,13 @@ footer__social-header b {
    .subscribe__btn {
        width: 100%;
    }
+   /*Blogs*/
+   .blogs__img {
+    width: 80px;
+    height: 50px;
+   }
 
+   .blogs__title {
+    font-size: 10px;
+   }
 }
