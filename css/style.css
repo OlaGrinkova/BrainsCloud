@@ -101,6 +101,7 @@ hr {
 }
 
 .header.fixed {/*фиксированное меню, +z-index:1000; но он уже в header прописан*/
+    padding: 10px 0;
     background-color: #e88683;
     box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
 
@@ -109,7 +110,7 @@ hr {
     left: 0;
     right: 0;
 
-    transform: rotate3d(0, 0, 0);/*чтоб ыменюшка не дергалась при скролле*/
+    transform: translate3d(0, 0, 0);/*чтоб менюшка не дергалась при скролле*/
 }
 
 .header.active {
@@ -196,10 +197,15 @@ hr {
     z-index: 1;
 }
 
+.nav-toggle:focus {
+    outline: 0;
+}
+
 .nav-toggle__item {
     display: block;
     width: 100%;
     height: 3px;
+    
 
     background-color: #ffffff;
 
@@ -230,7 +236,7 @@ hr {
     left: 0;
     z-index: 1;   
     
-    transform: transform .2s linear;
+    transition: transform .2s linear;
 }
 
 .nav-toggle__item:before {
@@ -685,7 +691,7 @@ section {
 .reviews__photo {
     display: block;/*обязателен для взаимодействия с мердженами в медиа, для центрирования фото*/
     width: 210px;
-    height: 210px;
+    height: 197px;
 
     position: absolute;
     top: 0;
@@ -719,9 +725,14 @@ section {
     background-color: #f38181;
 }
 
-.reviews__btn {
+.reviews__btn,
+.slick-arrow {
+    display: block;
     font-size: 0;
     color: transparent;
+
+    border: 0;
+    background: none;
 
     position: absolute;
     top: 50%;
@@ -741,7 +752,8 @@ section {
     
 }
 
-.reviews__btn--prev {
+.reviews__btn--prev,
+.slick-prev {
     left: 0;
     transform: rotate(-45deg);
 }
@@ -1297,6 +1309,7 @@ footer__social-header b {
     .logos {
         padding: 36px;
         margin: -16px;
+    }
 }
 
 @media (max-width: 990px) {
@@ -1419,13 +1432,17 @@ footer__social-header b {
        background: #e88683;
    }
 
+   .nav.active {
+       display: block;
+   }
+
    .nav__link {
        display: block;
        margin: 0;
        padding: 5px 20px;
    }
 
-   .nav-toggle |{
+   .nav-toggle {
        display: block; /*Показывать*/
    }
 
@@ -1495,7 +1512,7 @@ footer__social-header b {
    /*Reviews*/
    .reviews {
     padding: 0 50px;
-}
+    }
 
    .reviews__photo {
        position: static;/*фото оказывается сверху*/
