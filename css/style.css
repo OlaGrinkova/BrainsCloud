@@ -244,12 +244,12 @@ hr {
 
 .nav-toggle.active .nav-toggle__item:before {
     transform-origin: left top;
-    transform: rotate(45deg) translateX(-2px); 
+    transform: rotate(45deg) translate3d(0, -3px, 0); 
 }
 
 .nav-toggle.active .nav-toggle__item:after {
  transform-origin: left bottom;
- transform: rotate(-45deg) translateX(-3px);
+ transform: rotate(-45deg) translate3d(0, 2px, 0);
 }
 
 /*button*/
